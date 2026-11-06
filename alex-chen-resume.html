@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALEX CHEN // NINTENDO 2001 CONSOLE RESUME</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --primary: #e60012;
+      --signal: #f68d1f;
+      --amber: #ecab37;
+      --nav-gold: #e48600;
+      --canvas: #7a8aba;
+      --canvas-soft: #9fbee7;
+      --lavender: #acace7;
+      --ice: #c0d5e6;
+      --periwinkle: #8ba1d4;
+      --chrome-indigo: #3d4f97;
+      --muted-indigo: #60619c;
+      --platinum: #dedede;
+      --surface: #ffffff;
+      --carbon: #21242e;
+      --hairline: #5a5f8c;
+      --ink: #21242e;
+      --ink-soft: #3d4f97;
+      --on-primary: #ffffff;
+      --systems-teal: #206479;
+      --games-red: #a7282b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #4f5d87;
+      background-image:
+        radial-gradient(rgba(33, 36, 46, 0.28) 1px, transparent 0),
+        linear-gradient(180deg, #5d6d9e 0%, #3d4f97 100%);
+      background-size: 6px 6px, 100% 100%;
+      font-family: Arial, Helvetica, "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--ink);
+      padding: 16px 8px 36px;
+      min-height: 100vh;
+    }
+
+    /* Fixed 2001 Desktop Console Wrapper */
+    .console-shell {
+      width: 820px;
+      max-width: 100%;
+      margin: 0 auto;
+      position: relative;
+      padding-left: 26px; /* Space for rotated left-rail tabs */
+    }
+
+    /* Left-Rail Rotated Tabs */
+    .left-rail {
+      position: absolute;
+      left: 0;
+      top: 126px;
+      width: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 1;
+    }
+
+    .left-rail-tab {
+      background-color: var(--carbon);
+      background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 0);
+      background-size: 3px 3px;
+      color: var(--canvas-soft);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      padding: 10px 4px;
+      border-top: 1px solid var(--chrome-indigo);
+      border-right: 1px solid #000;
+      border-bottom: 2px solid var(--chrome-indigo);
+      cursor: pointer;
+      user-select: none;
+      text-align: center;
+    }
+
+    .left-rail-tab.active,
+    .left-rail-tab:hover {
+      background-color: var(--chrome-indigo);
+      color: var(--amber);
+    }
+
+    /* Masthead Row (Above Console Faceplate) */
+    .masthead {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 0 4px 6px;
+      gap: 12px;
+    }
+
+    .mascot-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mascot-avatar {
+      width: 44px;
+      height: 44px;
+      background: var(--surface);
+      border: 2px solid var(--carbon);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 2px 2px 0 var(--chrome-indigo);
+      flex-shrink: 0;
+    }
+
+    .mascot-bubble {
+      background: var(--surface);
+      color: var(--carbon);
+      font-size: 10px;
+      line-height: 1.3;
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--carbon);
+      position: relative;
+      box-shadow: 2px 2px 0 var(--chrome-indigo);
+      max-width: 390px;
+    }
+
+    .mascot-bubble strong {
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .search-module {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--canvas);
+      padding: 4px 6px;
+      border-top: 1px solid #b5c4ea;
+      border-left: 1px solid #b5c4ea;
+      border-right: 2px solid var(--chrome-indigo);
+      border-bottom: 2px solid var(--chrome-indigo);
+    }
+
+    .field-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0 2px;
+    }
+
+    .search-field {
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 12px;
+      height: 20px;
+      width: 115px;
+      padding: 2px 4px;
+      border: 1px solid var(--hairline);
+      border-radius: 2px;
+      outline: none;
+    }
+
+    .select-dropdown {
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 11px;
+      height: 22px;
+      padding: 1px 4px;
+      border: 1px solid var(--carbon);
+      border-radius: 2px;
+    }
+
+    /* Main Brushed-Periwinkle Console Faceplate */
+    .faceplate {
+      background-color: var(--canvas);
+      background-image: repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.04) 0px,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      border-top: 2px solid #b8c7ed;
+      border-left: 2px solid #b8c7ed;
+      border-right: 3px solid var(--chrome-indigo);
+      border-bottom: 3px solid var(--chrome-indigo);
+      /* Chamfered top-right and bottom-left corners */
+      clip-path: polygon(
+        0 0,
+        calc(100% - 12px) 0,
+        100% 12px,
+        100% 100%,
+        12px 100%,
+        0 calc(100% - 12px)
+      );
+    }
+
+    /* Carbon-Navy Halftone Texture Helper */
+    .carbon-slab {
+      background-color: var(--carbon);
+      background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 0);
+      background-size: 4px 4px;
+    }
+
+    /* Primary Top Nav Bar */
+    .nav-bar {
+      min-height: 32px;
+      padding: 4px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      border-bottom: 1px solid #000;
+      flex-wrap: wrap;
+    }
+
+    .logo-pill {
+      background: var(--surface);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      border-radius: 9999px;
+      padding: 2px 12px;
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--nav-gold);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 3px 4px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--amber);
+      border-bottom-color: var(--signal);
+    }
+
+    .nav-utilities {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Secondary Pale-Sky Subnav Strip */
+    .subnav-strip {
+      background: var(--canvas-soft);
+      color: var(--ink);
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      border-top: 1px solid #d5e6fb;
+      border-bottom: 2px solid var(--chrome-indigo);
+    }
+
+    .subnav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .subnav-sep {
+      color: var(--chrome-indigo);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--amber);
+      color: var(--carbon);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 2px;
+      border-top: 1px solid #fde293;
+      border-left: 1px solid #fde293;
+      border-right: 1px solid #966000;
+      border-bottom: 2px solid #966000;
+      cursor: pointer;
+    }
+
+    .btn-primary:active,
+    .btn-primary.active {
+      background: var(--nav-gold);
+      border-top-color: #966000;
+      border-bottom-color: #fde293;
+    }
+
+    .btn-submit {
+      background: var(--signal);
+      color: var(--on-primary);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+      border-top: 1px solid #ffc285;
+      border-left: 1px solid #ffc285;
+      border-right: 1px solid #8c4300;
+      border-bottom: 2px solid #8c4300;
+      cursor: pointer;
+    }
+
+    .btn-icon-arrow {
+      width: 22px;
+      height: 22px;
+      border-radius: 9999px;
+      background: var(--signal);
+      color: var(--on-primary);
+      border: 2px solid var(--surface);
+      box-shadow: 1px 1px 0 var(--carbon);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 900;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .btn-arrow-chip {
+      width: 18px;
+      height: 18px;
+      border-radius: 2px;
+      background: var(--signal);
+      color: var(--on-primary);
+      border-top: 1px solid #ffc285;
+      border-left: 1px solid #ffc285;
+      border-right: 1px solid #8c4300;
+      border-bottom: 1px solid #8c4300;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 900;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* Main Content Padding Inside Faceplate */
+    .console-body {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Hero Panel */
+    .hero-panel {
+      background-color: var(--lavender);
+      background-image:
+        linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(61,79,151,0.22) 100%),
+        repeating-linear-gradient(90deg, rgba(61,79,151,0.12) 0px, rgba(61,79,151,0.12) 1px, transparent 1px, transparent 24px),
+        repeating-linear-gradient(0deg, rgba(61,79,151,0.12) 0px, rgba(61,79,151,0.12) 1px, transparent 1px, transparent 24px);
+      border-radius: 6px;
+      padding: 16px;
+      border-top: 2px solid #d8d8fa;
+      border-left: 2px solid #d8d8fa;
+      border-right: 2px solid var(--chrome-indigo);
+      border-bottom: 3px solid var(--chrome-indigo);
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 16px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel[data-theme="systems"] {
+      background-color: var(--systems-teal);
+    }
+
+    .hero-panel[data-theme="games"] {
+      background-color: var(--games-red);
+    }
+
+    .hero-panel[data-theme="ice"] {
+      background-color: var(--ice);
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--carbon);
+      color: var(--amber);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      margin-bottom: 6px;
+    }
+
+    .display-wordmark {
+      font-family: "Arial Black", Impact, "Heiti TC", sans-serif;
+      font-size: 38px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0px;
+      color: var(--surface);
+      text-transform: uppercase;
+      -webkit-text-stroke: 2px var(--carbon);
+      text-shadow:
+        -2px -2px 0 var(--carbon),
+         2px -2px 0 var(--carbon),
+        -2px  2px 0 var(--carbon),
+         2px  2px 0 var(--carbon),
+         4px  4px 0 var(--carbon);
+      margin-bottom: 8px;
+    }
+
+    .hero-tagline {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.88);
+      padding: 8px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--chrome-indigo);
+      margin-bottom: 8px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .play-it-on-badge {
+      background: var(--signal);
+      color: var(--on-primary);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 7px;
+      border-radius: 2px;
+      border: 1px solid var(--carbon);
+    }
+
+    /* Hero Right Hardware Spec Card */
+    .hero-spec-plate {
+      background: rgba(33, 36, 46, 0.92);
+      color: var(--surface);
+      border: 2px solid var(--chrome-indigo);
+      border-radius: 4px;
+      padding: 10px;
+      font-size: 11px;
+    }
+
+    .hero-spec-title {
+      color: var(--amber);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-bottom: 1px dotted var(--muted-indigo);
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .spec-grid {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      row-gap: 4px;
+      column-gap: 6px;
+      font-size: 11px;
+    }
+
+    .spec-key {
+      color: var(--canvas-soft);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+
+    .spec-val {
+      color: var(--surface);
+    }
+
+    /* Two-Column Split Body (2/3 Left Content + 1/3 Right Action Rail) */
+    .split-grid {
+      display: grid;
+      grid-template-columns: 516px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .left-column,
+    .right-rail {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Beveled Content Plate */
+    .chrome-plate {
+      background: var(--canvas-soft);
+      border-top: 2px solid #d8e8ff;
+      border-left: 2px solid #d8e8ff;
+      border-right: 2px solid var(--chrome-indigo);
+      border-bottom: 2px solid var(--chrome-indigo);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .section-label-bar {
+      background: var(--canvas);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 6px 8px;
+      border-bottom: 2px solid var(--chrome-indigo);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-label-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-glyph {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: var(--amber);
+      border: 1px solid var(--carbon);
+    }
+
+    .plate-body {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* News-Row (Experience & Education Rows) */
+    .news-row {
+      background: var(--platinum);
+      border-top: 1px solid var(--chrome-indigo);
+      border-left: 1px solid var(--chrome-indigo);
+      border-right: 1px solid var(--surface);
+      border-bottom: 1px solid var(--surface);
+      border-radius: 4px;
+      padding: 8px;
+      transition: background-color 0.12s ease;
+    }
+
+    .news-row:hover {
+      background: var(--surface);
+    }
+
+    .news-row-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .news-row-title-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .role-badge {
+      background: var(--signal);
+      color: var(--on-primary);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .role-badge.past {
+      background: var(--chrome-indigo);
+    }
+
+    .role-badge.edu {
+      background: var(--systems-teal);
+    }
+
+    .news-headline {
+      color: var(--ink-soft);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .news-summary {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--ink);
+      padding-left: 4px;
+      border-left: 2px solid var(--chrome-indigo);
+    }
+
+    .dotted-divider {
+      border: none;
+      border-top: 1px dotted var(--muted-indigo);
+      margin: 6px 0;
+    }
+
+    /* Placeholder / Editable Slots */
+    .slot-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .slot-item {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .slot-tag {
+      background: var(--amber);
+      color: var(--carbon);
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .editable-slot {
+      color: var(--ink-soft);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px dashed var(--chrome-indigo);
+      padding: 1px 6px;
+      border-radius: 2px;
+      flex: 1;
+      min-height: 18px;
+    }
+
+    body.edit-mode .editable-slot {
+      background: #fffbe6;
+      border: 1px solid var(--signal);
+      color: var(--carbon);
+      outline: none;
+      box-shadow: inset 0 0 0 1px var(--amber);
+    }
+
+    /* System Tiles (2x2 Hardware / Skill Grid) */
+    .system-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .system-tile {
+      background-color: var(--periwinkle);
+      background-image:
+        radial-gradient(rgba(32, 100, 121, 0.18) 1px, transparent 0);
+      background-size: 5px 5px;
+      border-top: 1px solid #c2d4fa;
+      border-left: 1px solid #c2d4fa;
+      border-right: 2px solid var(--chrome-indigo);
+      border-bottom: 2px solid var(--chrome-indigo);
+      border-radius: 4px;
+      padding: 8px;
+    }
+
+    .system-tile-title {
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--surface);
+      text-transform: uppercase;
+      text-shadow:
+        -1px -1px 0 var(--carbon),
+         1px -1px 0 var(--carbon),
+        -1px  1px 0 var(--carbon),
+         1px  1px 0 var(--carbon),
+         2px  2px 0 var(--carbon);
+      margin-bottom: 4px;
+    }
+
+    /* Featured Sites 2x2 Grid (@nogita_yuusuke IG Module) */
+    .ig-header-banner {
+      background: var(--platinum);
+      border: 1px solid var(--chrome-indigo);
+      border-radius: 4px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .ig-stats-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .ig-stat-chip {
+      background: var(--carbon);
+      color: var(--amber);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 2px;
+      letter-spacing: 0.4px;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .featured-tile {
+      background: var(--carbon);
+      color: var(--on-primary);
+      border: 2px solid var(--chrome-indigo);
+      border-radius: 4px;
+      padding: 6px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .featured-thumb {
+      width: 68px;
+      height: 52px;
+      background: var(--lavender);
+      border: 1px solid var(--amber);
+      border-radius: 2px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--carbon);
+      font-weight: 700;
+      font-size: 9px;
+      padding: 2px;
+    }
+
+    .featured-meta {
+      font-size: 10px;
+      line-height: 1.3;
+    }
+
+    .featured-meta strong {
+      color: var(--amber);
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    /* Right Action Rail Components */
+    .rail-command-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .btn-secondary {
+      background-color: var(--carbon);
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 0);
+      background-size: 4px 4px;
+      color: var(--on-primary);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 8px 10px;
+      border-top: 1px solid var(--chrome-indigo);
+      border-left: 1px solid var(--chrome-indigo);
+      border-right: 2px solid #000;
+      border-bottom: 2px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .btn-secondary:hover {
+      color: var(--amber);
+    }
+
+    /* Info Box ("What Is") */
+    .info-box {
+      background: var(--surface);
+      border: 2px solid var(--chrome-indigo);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .info-box-tab {
+      background: var(--amber);
+      color: var(--carbon);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 5px 8px;
+      border-bottom: 1px solid var(--carbon);
+    }
+
+    .info-box-body {
+      padding: 10px;
+      font-size: 12px;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    /* Poll Panel */
+    .poll-panel {
+      background: var(--periwinkle);
+      border-top: 2px solid #c2d4fa;
+      border-left: 2px solid #c2d4fa;
+      border-right: 2px solid var(--chrome-indigo);
+      border-bottom: 2px solid var(--chrome-indigo);
+      border-radius: 6px;
+      padding: 10px;
+      color: var(--ink);
+    }
+
+    .poll-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--carbon);
+      border-bottom: 1px dotted var(--chrome-indigo);
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+    }
+
+    .poll-options {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin: 8px 0;
+    }
+
+    .poll-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .radio-dot {
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 9999px;
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      display: inline-grid;
+      place-content: center;
+      cursor: pointer;
+    }
+
+    .radio-dot:checked::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 9999px;
+      background: var(--signal);
+    }
+
+    /* Promo Card */
+    .promo-card {
+      background: var(--lavender);
+      border: 2px solid var(--chrome-indigo);
+      border-radius: 4px;
+      padding: 10px;
+      position: relative;
+    }
+
+    .promo-wordmark {
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--surface);
+      text-transform: uppercase;
+      -webkit-text-stroke: 1.2px var(--carbon);
+      text-shadow: 2px 2px 0 var(--carbon);
+      margin-bottom: 6px;
+    }
+
+    .esrb-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .esrb-rating-square {
+      width: 22px;
+      height: 22px;
+      background: var(--surface);
+      color: var(--carbon);
+      border: 2px solid var(--carbon);
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Footer Bar */
+    .footer-bar {
+      padding: 12px 16px;
+      color: var(--canvas-soft);
+      font-size: 10px;
+      line-height: 1.3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      border-top: 2px solid var(--chrome-indigo);
+    }
+
+    .esrb-badge {
+      background: var(--amber);
+      color: var(--carbon);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 2px;
+      border: 1px solid var(--surface);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .hidden-plate {
+      display: none !important;
+    }
+
+    @media (max-width: 760px) {
+      .console-shell {
+        padding-left: 0;
+      }
+      .left-rail {
+        display: none;
+      }
+      .hero-panel,
+      .split-grid,
+      .system-grid,
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .left-rail,
+      .search-module,
+      .nav-utilities {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="console-shell">
+    <!-- Left Rail Rotated Tabs -->
+    <aside class="left-rail" aria-label="Console Quick Tabs">
+      <div class="left-rail-tab active" data-filter="all">ALL SYSTEMS</div>
+      <div class="left-rail-tab" data-filter="experience">FINANCE LOG</div>
+      <div class="left-rail-tab" data-filter="education">ORIGIN LAB</div>
+      <div class="left-rail-tab" data-filter="nogita">NOGITA IG</div>
+    </aside>
+
+    <!-- Masthead Row -->
+    <header class="masthead">
+      <div class="mascot-group">
+        <div class="mascot-avatar" title="Alex Chen // @nogita_yuusuke">
+          <svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="6" y="4" width="20" height="6" fill="#e60012" />
+            <rect x="4" y="8" width="24" height="3" fill="#e60012" />
+            <rect x="8" y="11" width="16" height="11" fill="#f7d3a8" />
+            <rect x="11" y="14" width="3" height="3" fill="#21242e" />
+            <rect x="19" y="14" width="3" height="3" fill="#21242e" />
+            <rect x="7" y="22" width="18" height="7" fill="#3d4f97" />
+            <rect x="11" y="24" width="10" height="5" fill="#ecab37" />
+          </svg>
+        </div>
+        <div class="mascot-bubble" id="mascotText">
+          <strong>WELCOME TO ALEX.COM!</strong> 我是 <b>Alex Chen（乃木田佑典）</b>。點擊右上角「EDIT SLOTS」即可直接在網頁上填寫各段經歷的待填欄位！
+        </div>
+      </div>
+
+      <div class="search-module">
+        <span class="field-label">FIND:</span>
+        <input type="text" id="keywordInput" class="search-field" placeholder="BIOS / Oasis / 蝦皮..." />
+        <select id="sectionSelect" class="select-dropdown" aria-label="Section Filter">
+          <option value="all">All Plates</option>
+          <option value="experience">Experience</option>
+          <option value="education">Education</option>
+          <option value="nogita">Nogita IG</option>
+        </select>
+        <button type="button" class="btn-primary" id="searchGoBtn">GO</button>
+      </div>
+    </header>
+
+    <!-- Main Brushed-Periwinkle Console Faceplate -->
+    <main class="faceplate">
+      <!-- Primary Carbon Top Nav -->
+      <nav class="nav-bar carbon-slab" aria-label="Primary Navigation">
+        <div class="logo-pill" id="resetLogoBtn">ALEX CHEN</div>
+        <div class="nav-links">
+          <a class="nav-link active" data-filter="all">OVERVIEW</a>
+          <a class="nav-link" data-filter="experience">EXPERIENCE</a>
+          <a class="nav-link" data-filter="education">EDUCATION &amp; SKILLS</a>
+          <a class="nav-link" data-filter="nogita">NOGITA LOG</a>
+        </div>
+        <div class="nav-utilities">
+          <button type="button" class="btn-primary" id="toggleEditBtn">EDIT SLOTS: OFF</button>
+          <button type="button" class="btn-primary" onclick="window.print()">PRINT</button>
+        </div>
+      </nav>
+
+      <!-- Secondary Pale-Sky Subnav Strip -->
+      <div class="subnav-strip">
+        <div class="subnav-links">
+          <span>ROLE: FINANCIAL ANALYST</span>
+          <span class="subnav-sep">|</span>
+          <span>BIOS MONTHLY</span>
+          <span class="subnav-sep">|</span>
+          <span>OASIS COFFEE ROASTERS</span>
+          <span class="subnav-sep">|</span>
+          <span>EX-SHOPEE ACCOUNTING</span>
+          <span class="subnav-sep">|</span>
+          <span>PU COSMETIC SCIENCE</span>
+        </div>
+        <span>IG: @NOGITA_YUUSUKE</span>
+      </div>
+
+      <!-- Console Body -->
+      <div class="console-body">
+        <!-- Hero Panel -->
+        <section class="hero-panel" id="heroPanel" data-theme="home">
+          <div>
+            <div class="hero-eyebrow">
+              <span>SYSTEM VER. 2001</span>
+              <span>•</span>
+              <span id="heroModeLabel">FINANCIAL ANALYST &amp; LIFESTYLE ARCHIVIST</span>
+            </div>
+            <h1 class="display-wordmark" id="heroWordmark">ALEX CHEN</h1>
+            <p class="hero-tagline">
+              我是 Alex Chen，於 <strong>BIOS monthly</strong> 以及 <strong>Oasis Coffee Roasters</strong> 擔任財務分析，過去也曾在<strong>蝦皮帳務部</strong>服務，畢業於<strong>靜宜大學化妝品科學系</strong>。
+            </p>
+            <div class="hero-cta-row">
+              <span class="play-it-on-badge">PLAY IT ON: FINANCE &amp; STRATEGY</span>
+              <button type="button" class="btn-submit" id="heroEditJumpBtn">開啟待填欄位編輯 (INLINE EDIT)</button>
+              <button type="button" class="btn-icon-arrow" id="cycleThemeBtn" title="切換機殼 Hero 主題色">▸</button>
+            </div>
+          </div>
+
+          <div class="hero-spec-plate">
+            <div class="hero-spec-title">
+              <span>≡ PLAYER HARDWARE SPECS</span>
+              <span>[E]</span>
+            </div>
+            <div class="spec-grid">
+              <span class="spec-key">PLAYER</span>
+              <span class="spec-val">Alex Chen / 乃木田佑典</span>
+              <span class="spec-key">CURRENT</span>
+              <span class="spec-val">BIOS monthly 財務分析<br/>Oasis Coffee Roasters 財務分析</span>
+              <span class="spec-key">PAST EXP</span>
+              <span class="spec-val">蝦皮購物 (Shopee) 帳務部</span>
+              <span class="spec-key">ACADEMY</span>
+              <span class="spec-val">靜宜大學 化妝品科學系</span>
+              <span class="spec-key">SIDE LOG</span>
+              <span class="spec-val">@nogita_yuusuke (986+ 貼文)</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Two-Column Body -->
+        <div class="split-grid">
+          <!-- Left 2/3 Column -->
+          <div class="left-column">
+            <!-- Plate 1: Career Experience -->
+            <section class="chrome-plate" data-section="experience">
+              <div class="section-label-bar">
+                <div class="section-label-left">
+                  <span class="section-glyph"></span>
+                  <span>OFFICIAL CAREER LOG // 財務與帳務經歷</span>
+                </div>
+                <span>3 CARTRIDGES LOADED</span>
+              </div>
+
+              <div class="plate-body">
+                <!-- Job 1: BIOS monthly -->
+                <article class="news-row">
+                  <div class="news-row-header">
+                    <div class="news-row-title-group">
+                      <span class="role-badge">CURRENT</span>
+                      <span class="news-headline">BIOS monthly — 財務分析 (Financial Analyst)</span>
+                    </div>
+                    <span class="btn-arrow-chip" title="待填欄位可編輯">▸</span>
+                  </div>
+                  <p class="news-summary">
+                    於台灣具代表性的文化創意與當代生活內容媒體《BIOS monthly》擔任財務分析。
+                  </p>
+                  <hr class="dotted-divider" />
+                  <ul class="slot-list">
+                    <li class="slot-item">
+                      <span class="slot-tag">PERIOD</span>
+                      <span class="editable-slot" contenteditable="false">[待填：任職期間，例：202X.XX – Present]</span>
+                    </li>
+                    <li class="slot-item">
+                      <span class="slot-tag">SCOPE</span>
+                      <span class="editable-slot" contenteditable="false">[待填：主要職責，例：內容專案損益評估、年度預算編列、現金流與管報分析]</span>
+                    </li>
+                    <li class="slot-item">
+                      <span class="slot-tag">IMPACT</span>
+                      <span class="editable-slot" contenteditable="false">[待填：關鍵成果與量化指標]</span>
+                    </li>
+                  </ul>
+                </article>
+
+                <!-- Job 2: Oasis Coffee Roasters -->
+                <article class="news-row">
+                  <div class="news-row-header">
+                    <div class="news-row-title-group">
+                      <span class="role-badge">CURRENT</span>
+                      <span class="news-headline">Oasis Coffee Roasters — 財務分析 (Financial Analyst)</span>
+                    </div>
+                    <span class="btn-arrow-chip" title="待填欄位可編輯">▸</span>
+                  </div>
+                  <p class="news-summary">
+                    於台北知名精品咖啡烘焙品牌 Oasis Coffee Roasters 擔任財務分析，連結餐飲門市與生豆烘焙營運數據。
+                  </p>
+                  <hr class="dotted-divider" />
+                  <ul class="slot-list">
+                    <li class="slot-item">
+                      <span class="slot-tag">PERIOD</span>
+                      <span class="editable-slot" contenteditable="false">[待填：任職期間，例：202X.XX – Present]</span>
+                    </li>
+                    <li class="slot-item">
+                      <span class="slot-tag">SCOPE</span>
+                      <span class="editable-slot" contenteditable="false">[待填：主要職責，例：門市營收與毛利分析、生豆與物料成本結構控管、營運報表編製]</span>
+                    </li>
+                    <li class="slot-item">
+                      <span class="slot-tag">IMPACT</span>
+                      <span class="editable-slot" contenteditable="false">[待填：關鍵成果與量化指標]</span>
+                    </li>
+                  </ul>
+                </article>
+
+                <!-- Job 3: Shopee -->
+                <article class="news-row">
+                  <div class="news-row-header">
+                    <div class="news-row-title-group">
+                      <span class="role-badge past">ARCHIVE</span>
+                      <span class="news-headline">蝦皮購物 Shopee — 帳務部 (Accounting Department)</span>
+                    </div>
+                    <span class="btn-arrow-chip" title="待填欄位可編輯">▸</span>
+                  </div>
+                  <p class="news-summary">
+                    曾於大型電商平台蝦皮購物（Shopee）帳務部服務，歷練高交易量電商環境之帳務作業流程。
+                  </p>
+                  <hr class="dotted-divider" />
+                  <ul class="slot-list">
+                    <li class="slot-item">
+                      <span class="slot-tag">PERIOD</span>
+                      <span class="editable-slot" contenteditable="false">[待填：任職期間，例：202X.XX – 202X.XX]</span>
+                    </li>
+                    <li class="slot-item">
+                      <span class="slot-tag">SCOPE</span>
+                      <span class="editable-slot" contenteditable="false">[待填：主要職責，例：平台金流對帳、應收應付帳務處理、月結關帳與憑證審核]</span>
+                    </li>
+                    <li class="slot-item">
+                      <span class="slot-tag">IMPACT</span>
+                      <span class="editable-slot" contenteditable="false">[待填：關鍵成果與量化指標]</span>
+                    </li>
+                  </ul>
+                </article>
+              </div>
+            </section>
+
+            <!-- Plate 2: Education & Core Skill Slots -->
+            <section class="chrome-plate" data-section="education">
+              <div class="section-label-bar">
+                <div class="section-label-left">
+                  <span class="section-glyph"></span>
+                  <span>ORIGIN LAB &amp; SKILL SLOTS // 學歷背景與專業模組</span>
+                </div>
+                <span>PROVIDENCE UNIV.</span>
+              </div>
+
+              <div class="plate-body">
+                <article class="news-row">
+                  <div class="news-row-header">
+                    <div class="news-row-title-group">
+                      <span class="role-badge edu">DEGREE</span>
+                      <span class="news-headline">靜宜大學 (Providence University) — 化妝品科學系</span>
+                    </div>
+                    <span class="btn-arrow-chip">▸</span>
+                  </div>
+                  <p class="news-summary">
+                    畢業於靜宜大學化妝品科學系，具備嚴謹的實驗數據紀錄、配方比例拆解與邏輯分析訓練，成為跨足電商帳務與品牌財務分析的扎實基底。
+                  </p>
+                  <hr class="dotted-divider" />
+                  <ul class="slot-list">
+                    <li class="slot-item">
+                      <span class="slot-tag">YEAR</span>
+                      <span class="editable-slot" contenteditable="false">[待填：畢業年份 / 在學期間]</span>
+                    </li>
+                    <li class="slot-item">
+                      <span class="slot-tag">NOTE</span>
+                      <span class="editable-slot" contenteditable="false">[待填：學位論文、社團幹部或財務會計相關進修紀錄]</span>
+                    </li>
+                  </ul>
+                </article>
+
+                <div class="system-grid">
+                  <div class="system-tile">
+                    <div class="system-tile-title">SLOT 01 // FP&amp;A</div>
+                    <div class="editable-slot" contenteditable="false">[待填：財務分析技能，例：損益表分析、成本結構拆解、預算控管]</div>
+                  </div>
+                  <div class="system-tile">
+                    <div class="system-tile-title">SLOT 02 // ACCOUNTING</div>
+                    <div class="editable-slot" contenteditable="false">[待填：帳務技能，例：電商對帳、應收應付、月結報表]</div>
+                  </div>
+                  <div class="system-tile">
+                    <div class="system-tile-title">SLOT 03 // TOOLS</div>
+                    <div class="editable-slot" contenteditable="false">[待填：工具與系統，例：Excel 樞紐/VBA、ERP、Google Sheets]</div>
+                  </div>
+                  <div class="system-tile">
+                    <div class="system-tile-title">SLOT 04 // LANGUAGES</div>
+                    <div class="editable-slot" contenteditable="false">[待填：語言與證照，例：繁體中文、英文、日文檢定或財會證照]</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Plate 3: Instagram @nogita_yuusuke Lifestyle & Photography Log -->
+            <section class="chrome-plate" data-section="nogita">
+              <div class="section-label-bar">
+                <div class="section-label-left">
+                  <span class="section-glyph"></span>
+                  <span>FEATURED SIDE-QUEST // IG @NOGITA_YUUSUKE 生活品味誌</span>
+                </div>
+                <span>FIELD ARCHIVE</span>
+              </div>
+
+              <div class="plate-body">
+                <div class="ig-header-banner">
+                  <div>
+                    <strong style="color: var(--ink-soft); font-size: 12px;">乃木田佑典 / Nogita Yuusuke (@nogita_yuusuke)</strong>
+                    <p style="font-size: 11px; color: var(--ink); margin-top: 2px;">
+                      對台灣與日本街頭飲食、精品咖啡館與設計旅宿的長期影像紀實，將日常感官觀察與「BIOS monthly 文化視角」、「Oasis Coffee Roasters 咖啡實務」自然串聯。
+                    </p>
+                  </div>
+                  <div class="ig-stats-row">
+                    <span class="ig-stat-chip">POSTS: ~986</span>
+                    <span class="ig-stat-chip">FOLLOWERS: ~1K</span>
+                  </div>
+                </div>
+
+                <div class="featured-grid">
+                  <div class="featured-tile">
+                    <div class="featured-thumb">
+                      <span>TAIPEI</span>
+                      <span style="font-size:14px;">🍜</span>
+                      <span>STREET FOOD</span>
+                    </div>
+                    <div class="featured-meta">
+                      <strong>台式街頭味覺檔案</strong>
+                      行天宮「三角窗古早味麵攤」等在地老店影像紀錄（曾獲 myVideo 戲劇《做工的人》取景專文引用）。
+                    </div>
+                  </div>
+
+                  <div class="featured-tile">
+                    <div class="featured-thumb" style="background: var(--canvas-soft);">
+                      <span>ROAST</span>
+                      <span style="font-size:14px;">☕</span>
+                      <span>COFFEE LOG</span>
+                    </div>
+                    <div class="featured-meta">
+                      <strong>精品咖啡與空間觀察</strong>
+                      長年走訪台日獨立咖啡館與烘焙所，對吧台動線、單品風味與品牌體驗具備第一線敏銳度。
+                    </div>
+                  </div>
+
+                  <div class="featured-tile">
+                    <div class="featured-thumb" style="background: var(--ice);">
+                      <span>TOKYO</span>
+                      <span style="font-size:14px;">🏨</span>
+                      <span>9h STAY</span>
+                    </div>
+                    <div class="featured-meta">
+                      <strong>日本旅宿與城市探索</strong>
+                      收錄東京赤坂 Nine Hours (9h) 等極簡設計旅宿與餐廳紀實（見於日本 Sassy 旅遊平台）。
+                    </div>
+                  </div>
+
+                  <div class="featured-tile">
+                    <div class="featured-thumb" style="background: var(--periwinkle);">
+                      <span>SENSORY</span>
+                      <span style="font-size:14px;">📷</span>
+                      <span>CURATION</span>
+                    </div>
+                    <div class="featured-meta">
+                      <strong>感官與數字的雙重平衡</strong>
+                      以化科系的精準加上財務分析的理性，在近千則貼文中建立個人獨有的飲食與生活美學座標。
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Right 1/3 Action Rail -->
+          <aside class="right-rail">
+            <!-- Carbon Command Buttons -->
+            <div class="rail-command-stack">
+              <button type="button" class="btn-secondary" id="railEditBtn">
+                <span>▸ INLINE EDIT // 填寫待填欄</span>
+                <span class="btn-arrow-chip">▸</span>
+              </button>
+              <button type="button" class="btn-secondary" onclick="window.print()">
+                <span>▸ EXPORT // 列印或存為 PDF</span>
+                <span class="btn-arrow-chip">▸</span>
+              </button>
+              <button type="button" class="btn-secondary" id="copyIgBtn">
+                <span>▸ COPY IG // @nogita_yuusuke</span>
+                <span class="btn-arrow-chip">▸</span>
+              </button>
+            </div>
+
+            <!-- Info Box: Contact & Profile -->
+            <div class="info-box">
+              <div class="info-box-tab">WHAT IS — CONTACT &amp; LINKS</div>
+              <div class="info-box-body">
+                <p>
+                  <strong>Alex Chen（乃木田佑典）</strong><br/>
+                  橫跨「文創媒體 × 精品咖啡 × 電商帳務 × 化妝品科學」的財務分析師。
+                </p>
+                <hr class="dotted-divider" />
+                <div class="slot-item">
+                  <span class="slot-tag">EMAIL</span>
+                  <span class="editable-slot" contenteditable="false">[待填：alex.chen@example.com]</span>
+                </div>
+                <div class="slot-item">
+                  <span class="slot-tag">PHONE</span>
+                  <span class="editable-slot" contenteditable="false">[待填：09XX-XXX-XXX]</span>
+                </div>
+                <div class="slot-item">
+                  <span class="slot-tag">BASE</span>
+                  <span class="editable-slot" contenteditable="false">Taipei, Taiwan</span>
+                </div>
+                <div class="slot-item">
+                  <span class="slot-tag">IG</span>
+                  <span>@nogita_yuusuke</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Player's Poll Module -->
+            <form class="poll-panel" id="pollForm">
+              <div class="poll-title">≡ PLAYER'S POLL // 檢視重心切換</div>
+              <p style="font-size: 11px;">選擇您最想深入了解的 Alex 職涯面向：</p>
+              <div class="poll-options">
+                <label class="poll-label">
+                  <input type="radio" name="focus" value="all" class="radio-dot" checked />
+                  <span>完整履歷全覽 (Full Console)</span>
+                </label>
+                <label class="poll-label">
+                  <input type="radio" name="focus" value="experience" class="radio-dot" />
+                  <span>財務與帳務經歷 (BIOS / Oasis / 蝦皮)</span>
+                </label>
+                <label class="poll-label">
+                  <input type="radio" name="focus" value="education" class="radio-dot" />
+                  <span>靜宜化科與技能插槽 (Origin &amp; Skills)</span>
+                </label>
+                <label class="poll-label">
+                  <input type="radio" name="focus" value="nogita" class="radio-dot" />
+                  <span>生活品味支線 (@nogita_yuusuke)</span>
+                </label>
+              </div>
+              <button type="submit" class="btn-submit" style="width: 100%;">SUBMIT // 切換檢視</button>
+            </form>
+
+            <!-- Side Promo Card -->
+            <div class="promo-card">
+              <div class="promo-wordmark">COFFEE × MEDIA × NUMBERS</div>
+              <p style="font-size: 11px; color: var(--ink);">
+                從靜宜化科的實驗室配方、蝦皮帳務部的高頻金流，到 BIOS monthly 與 Oasis Coffee Roasters 的品牌財務分析。
+              </p>
+              <div class="esrb-row">
+                <div class="esrb-rating-square">E</div>
+                <span style="font-size: 10px; font-weight: 700; color: var(--carbon);">
+                  EVERYONE // AUDIT &amp; CULTURE READY
+                </span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <!-- Footer Bar -->
+      <footer class="footer-bar carbon-slab">
+        <div>
+          ©2001–2026 ALEX CHEN (乃木田佑典 / @nogita_yuusuke). INSPIRED BY NINTENDO.COM (2001) CONSOLE CHROME DESIGN SYSTEM.
+        </div>
+        <div class="esrb-badge">ESRB — PRIVACY &amp; LEDGER CERTIFIED</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      let editMode = false;
+      const toggleEditBtn = document.getElementById("toggleEditBtn");
+      const railEditBtn = document.getElementById("railEditBtn");
+      const heroEditJumpBtn = document.getElementById("heroEditJumpBtn");
+      const mascotText = document.getElementById("mascotText");
+      const editableSlots = document.querySelectorAll(".editable-slot");
+
+      function setEditMode(nextState) {
+        editMode = nextState;
+        document.body.classList.toggle("edit-mode", editMode);
+        editableSlots.forEach((el) => {
+          el.setAttribute("contenteditable", editMode ? "true" : "false");
+        });
+        toggleEditBtn.textContent = editMode ? "EDIT SLOTS: ON" : "EDIT SLOTS: OFF";
+        toggleEditBtn.classList.toggle("active", editMode);
+        mascotText.innerHTML = editMode
+          ? "<strong>EDIT MODE ACTIVE!</strong> 現在可直接點擊任何黃色高亮的 <b>[待填：...]</b> 欄位修改文字，完成後可按 PRINT 匯出 PDF！"
+          : "<strong>WELCOME TO ALEX.COM!</strong> 我是 <b>Alex Chen（乃木田佑典）</b>。點擊右上角「EDIT SLOTS」即可直接在網頁上填寫各段經歷的待填欄位！";
+        if (editMode && editableSlots[0]) {
+          editableSlots[0].focus();
+        }
+      }
+
+      toggleEditBtn.addEventListener("click", () => setEditMode(!editMode));
+      railEditBtn.addEventListener("click", () => setEditMode(!editMode));
+      heroEditJumpBtn.addEventListener("click", () => setEditMode(true));
+
+      // Section Filtering (Nav links, Left rail tabs, Dropdown, Poll)
+      const plates = document.querySelectorAll(".chrome-plate[data-section]");
+      const navLinks = document.querySelectorAll(".nav-link[data-filter]");
+      const railTabs = document.querySelectorAll(".left-rail-tab[data-filter]");
+      const heroPanel = document.getElementById("heroPanel");
+      const heroWordmark = document.getElementById("heroWordmark");
+
+      const themeMap = {
+        all: { theme: "home", title: "ALEX CHEN" },
+        experience: { theme: "systems", title: "CAREER LOG" },
+        education: { theme: "ice", title: "ORIGIN LAB" },
+        nogita: { theme: "games", title: "NOGITA LOG" }
+      };
+
+      function applyFilter(filterKey) {
+        plates.forEach((plate) => {
+          const match = filterKey === "all" || plate.dataset.section === filterKey;
+          plate.classList.toggle("hidden-plate", !match);
+        });
+        navLinks.forEach((link) => {
+          link.classList.toggle("active", link.dataset.filter === filterKey);
+        });
+        railTabs.forEach((tab) => {
+          tab.classList.toggle("active", tab.dataset.filter === filterKey);
+        });
+        const cfg = themeMap[filterKey] || themeMap.all;
+        heroPanel.setAttribute("data-theme", cfg.theme);
+        heroWordmark.textContent = cfg.title;
+      }
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => applyFilter(link.dataset.filter));
+      });
+      railTabs.forEach((tab) => {
+        tab.addEventListener("click", () => applyFilter(tab.dataset.filter));
+      });
+      document.getElementById("resetLogoBtn").addEventListener("click", () => applyFilter("all"));
+
+      // Poll form submit
+      document.getElementById("pollForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const checked = document.querySelector('input[name="focus"]:checked');
+        if (checked) applyFilter(checked.value);
+      });
+
+      // Search & Filter bar
+      const keywordInput = document.getElementById("keywordInput");
+      const sectionSelect = document.getElementById("sectionSelect");
+      function runSearch() {
+        const kw = keywordInput.value.trim().toLowerCase();
+        const sec = sectionSelect.value;
+        applyFilter(sec);
+        document.querySelectorAll(".news-row, .featured-tile, .system-tile").forEach((item) => {
+          const visible = !kw || item.textContent.toLowerCase().includes(kw);
+          item.style.opacity = visible ? "1" : "0.35";
+        });
+      }
+      document.getElementById("searchGoBtn").addEventListener("click", runSearch);
+      keywordInput.addEventListener("input", runSearch);
+      sectionSelect.addEventListener("change", runSearch);
+
+      // Cycle Hero Theme button
+      const themes = ["home", "systems", "ice", "games"];
+      let themeIdx = 0;
+      document.getElementById("cycleThemeBtn").addEventListener("click", () => {
+        themeIdx = (themeIdx + 1) % themes.length;
+        heroPanel.setAttribute("data-theme", themes[themeIdx]);
+      });
+
+      // Copy IG handle
+      document.getElementById("copyIgBtn").addEventListener("click", () => {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText("@nogita_yuusuke");
+        }
+        mascotText.innerHTML = "<strong>COPIED!</strong> 已複製 Instagram 帳號 <b>@nogita_yuusuke</b>（乃木田佑典）！";
+      });
+    })();
+  </script>
+</body>
+</html>
